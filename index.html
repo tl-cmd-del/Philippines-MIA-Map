@@ -100,6 +100,7 @@ var underReview = 0;
 var relativeKnown = 0;
 var relativeUnknown = 0;
 var unknownLocationMembers = []; 
+var serviceMembers = {};
 L.tileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
@@ -148,6 +149,7 @@ var redIcon = new L.Icon({
     popupAnchor: [1, -34]
 });
 var arrington = L.marker([13.95,122.30], {icon: greenIcon});
+serviceMembers["arrington"] = arrington;
 markers.addLayer(arrington);
 arrington.bindPopup(
 "<b>Pvt Carroll J. Arrington</b><br>" +
@@ -162,6 +164,7 @@ relativeKnown++;
 totalRecords++;
 
 var abel = L.marker([15.5108,121.0378], {icon: greenIcon});
+serviceMembers["abel"] = abel;
 markers.addLayer(abel);
 abel.bindPopup(
 "<b>TEC 4 Charles E. Abel</b><br>" +
@@ -176,6 +179,7 @@ relativeKnown++;
 totalRecords++;
     
 var carey = L.marker([14.62, 120.58], {icon: greenIcon});
+serviceMembers["carey"] = carey;
 markers.addLayer(carey);
 carey.bindPopup(
 "<b>Pvt Murl J. Carey</b><br>" +
@@ -190,6 +194,7 @@ relativeKnown++;
 totalRecords++;
     
 var bodrero = L.marker([7.85, 123.15], {icon: greenIcon});
+serviceMembers["bodrero"] = bodrero;
 markers.addLayer(bodrero);
 bodrero.bindPopup(
 "<b>Staff Sgt Glen L. Bodrero</b><br>" +
@@ -204,6 +209,7 @@ relativeKnown++;
 totalRecords++;
     
 var barlow = L.marker([15.5108, 121.0378], {icon: greenIcon});
+serviceMembers["barlow"] = barlow;
 markers.addLayer(barlow);
 barlow.bindPopup(
 "<b>Sea1 Woods R. Barlow</b><br>" +
@@ -218,6 +224,7 @@ relativeKnown++;
 totalRecords++;
     
 var brown = L.marker([15.5108, 121.0378], {icon: greenIcon});
+serviceMembers["brown"] = brown;
 markers.addLayer(brown);
 brown.bindPopup(
 "<b>Pvt Vincent C. Brown</b><br>" +
@@ -234,6 +241,7 @@ totalRecords++;
 // NON-RECOVERABLE (BLACK)
 
 var amp = L.marker([11.05,124.40], {icon: blackIcon});
+serviceMembers["amp"] = amp;
 markers.addLayer(amp);
 amp.bindPopup(
 "<b>Sea2 Charles H. Amp</b><br>" +
