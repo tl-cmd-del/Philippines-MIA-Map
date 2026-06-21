@@ -99,6 +99,7 @@ var underReview = 0;
 
 var relativeKnown = 0;
 var relativeUnknown = 0;
+var unknownLocationMembers = []; 
 L.tileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
@@ -252,16 +253,25 @@ var unknown = L.marker([14.5,118.5], {icon: redIcon});
 markers.addLayer(unknown);
 unknown.bindPopup(
 "<b>Relative Location Unknown</b><br>" +
-"1 Service Member<br><br>" +
-"S1C Stanley J. Abcunas<br>" +
-"Status: Non-Recoverable<br>" +
-"No DPAA Profile Available"
+relativeUnknown +
+" Service Member(s)<br><br>" +
+unknownLocationMembers.join("<br>")
 );
 
 nonRecoverable++;
 relativeUnknown++;
 totalRecords++;
 
+unknownLocationMembers.push(
+"S1C Stanley J. Abcunas"
+);
+
+relativeUnknown++;
+totalRecords++;
+    
+unknownLocationMembers.push(
+"Pvt John Smith"
+);
 
 document.getElementById("totalRecords").textContent = totalRecords;
 
