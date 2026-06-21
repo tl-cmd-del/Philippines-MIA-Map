@@ -32,20 +32,38 @@
             box-shadow: 0 0 5px rgba(0,0,0,.3);
             font-family: Arial, sans-serif;
         }
+        #stats-button {
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
     </style>
 </head>
 
 <body>
 
 <div class="info-box">
-    <h3>Philippines MIA Map</h3>
-    <p>Total Records: 8</p>
+
+<button onclick="toggleStats()" id="stats-button">
+▼ Statistics
+</button>
+
+<div id="stats-content">
+
+<h3>Philippines MIA Map</h3>
+
+<p>Total Records: 8</p>
 
 <p>🟢 Active Pursuit: 6</p>
 <p>⚫ Non-Recoverable: 2</p>
 
-<p>⚪️ Relative Location Known: 7</p>
+<p>🗺️ Relative Location Known: 7</p>
 <p>🔴 Relative Location Unknown: 1</p>
+
+</div>
+
 </div>
 
 <div id="map"></div>
@@ -71,7 +89,7 @@ arrington.bindPopup(
 "Location: Near Calauag and Basiad River"
 );
 
-var abel = L.marker([15.49, 120.97]).addTo(map);
+var abel = L.marker([15.5108, 121.0378]).addTo(map);
 abel.bindPopup(
 "<b>TEC 4 Charles E. Abel</b><br>" +
 "Status: Active Pursuit<br>" +
@@ -85,21 +103,21 @@ carey.bindPopup(
 "Location: Orion"
 );
 
-var bodrero = L.marker([7.20, 125.00]).addTo(map);
+var bodrero = L.marker([7.85, 123.15]).addTo(map);
 bodrero.bindPopup(
 "<b>Staff Sgt Glen L. Bodrero</b><br>" +
 "Status: Active Pursuit<br>" +
 "Location: Mindanao Island"
 );
 
-var barlow = L.marker([15.49, 120.97]).addTo(map);
+var barlow = L.marker([15.5108, 121.0378]).addTo(map);
 barlow.bindPopup(
 "<b>Sea1 Woods R. Barlow</b><br>" +
 "Status: Active Pursuit<br>" +
 "Location: Cabanatuan Prison Camp"
 );
 
-var brown = L.marker([15.49, 120.97]).addTo(map);
+var brown = L.marker([15.5108, 121.0378]).addTo(map);
 brown.bindPopup(
 "<b>Pvt Vincent C. Brown</b><br>" +
 "Status: Active Pursuit<br>" +
@@ -128,5 +146,27 @@ unknown.bindPopup(
 
 </script>
 
+<script>
+
+function toggleStats() {
+
+    var stats = document.getElementById("stats-content");
+    var button = document.getElementById("stats-button");
+
+    if (stats.style.display === "none") {
+
+        stats.style.display = "block";
+        button.innerHTML = "▼ Statistics";
+
+    } else {
+
+        stats.style.display = "none";
+        button.innerHTML = "▶ Statistics";
+
+    }
+
+}
+
+</script>
 </body>
 </html>
