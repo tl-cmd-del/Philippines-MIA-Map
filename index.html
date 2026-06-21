@@ -340,6 +340,33 @@ function toggleStats() {
 
 }
 
+function searchMember() {
+
+    var searchText =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    if (serviceMembers[searchText]) {
+
+        var marker = serviceMembers[searchText];
+
+        map.setView(
+            marker.getLatLng(),
+            12
+        );
+
+        marker.openPopup();
+
+    } else {
+
+        alert("Service member not found.");
+
+    }
+
+}
+
 </script>
 </body>
 </html>
