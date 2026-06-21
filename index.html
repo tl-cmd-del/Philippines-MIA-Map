@@ -251,12 +251,7 @@ totalRecords++;
 
 var unknown = L.marker([14.5,118.5], {icon: redIcon});
 markers.addLayer(unknown);
-unknown.bindPopup(
-"<b>Relative Location Unknown</b><br>" +
-relativeUnknown +
-" Service Member(s)<br><br>" +
-unknownLocationMembers.join("<br>")
-);
+
 
 nonRecoverable++;
 relativeUnknown++;
@@ -273,7 +268,14 @@ totalRecords++;
     unknownLocationMembers.push(
 "Pvt John Smith"
 );
-
+    
+unknown.bindPopup(
+"<b>Relative Location Unknown</b><br>" +
+relativeUnknown +
+" Service Member(s)<br><br>" +
+unknownLocationMembers.join("<br>")
+);
+    
     
 
 document.getElementById("totalRecords").textContent = totalRecords;
