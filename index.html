@@ -59,13 +59,13 @@ href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.c
 
 <h3>Philippines MIA Map</h3>
 
-<p>Total Records: 8</p>
+<p>Total Records: <span id="totalRecords">0</span></p>
 
-<p>🟢 Active Pursuit: 6</p>
-<p>⚫ Non-Recoverable: 2</p>
+<p>🟢 Active Pursuit: <span id="activePursuit">0</span></p>
+<p>⚫ Non-Recoverable: <span id="nonRecoverable">0</span></p>
 
-<p>🔵 Relative Location Known: 7</p>
-<p>🔴 Relative Location Unknown: 1</p>
+<p>🔵 Relative Location Known: <span id="relativeKnown">0</span></p>
+<p>🔴 Relative Location Unknown: <span id="relativeUnknown">0</span></p>
 
 <hr>
 
@@ -90,6 +90,15 @@ href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.c
 var map = L.map('map').setView([12.8797, 121.7740], 6);
 
    var markers = L.markerClusterGroup(); 
+    var totalRecords = 0;
+
+var activePursuit = 0;
+var nonRecoverable = 0;
+var deferred = 0;
+var underReview = 0;
+
+var relativeKnown = 0;
+var relativeUnknown = 0;
 L.tileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
@@ -146,6 +155,10 @@ arrington.bindPopup(
 "Relative Location: Known<br><br>" +
 "<a href='https://dpaa-mil.sites.crmforce.mil/dpaaProfile?id=a0Jt000001Hu1pyEAB' target='_blank'>Open DPAA Profile</a>"
 );
+    
+activePursuit++;
+relativeKnown++;
+totalRecords++;
 
 var abel = L.marker([15.5108,121.0378], {icon: greenIcon});
 markers.addLayer(abel);
@@ -156,7 +169,11 @@ abel.bindPopup(
 "Relative Location: Known<br><br>" +
 "No DPAA Profile Available"
 );
-
+    
+activePursuit++;
+relativeKnown++;
+totalRecords++;
+    
 var carey = L.marker([14.62, 120.58], {icon: greenIcon});
 markers.addLayer(carey);
 carey.bindPopup(
@@ -166,7 +183,11 @@ carey.bindPopup(
 "Relative Location: Known<br><br>" +
 "<a href='https://dpaa-mil.sites.crmforce.mil/dpaaProfile?id=a0Jt000001nI58nEAC' target='_blank'>Open DPAA Profile</a>"
 );
-
+    
+activePursuit++;
+relativeKnown++;
+totalRecords++;
+    
 var bodrero = L.marker([7.85, 123.15], {icon: greenIcon});
 markers.addLayer(bodrero);
 bodrero.bindPopup(
@@ -176,7 +197,11 @@ bodrero.bindPopup(
 "Relative Location: Known<br><br>" +
 "<a href='https://dpaa-mil.sites.crmforce.mil/dpaaProfile?id=a0Jt0000000XmNzEAK' target='_blank'>Open DPAA Profile</a>"
 );
-
+    
+activePursuit++;
+relativeKnown++;
+totalRecords++;
+    
 var barlow = L.marker([15.5108, 121.0378], {icon: greenIcon});
 markers.addLayer(barlow);
 barlow.bindPopup(
@@ -186,7 +211,11 @@ barlow.bindPopup(
 "Relative Location: Known<br><br>" +
 "<a href='https://dpaa-mil.sites.crmforce.mil/dpaaProfile?id=a0Jt0000000XdeJEAS' target='_blank'>Open DPAA Profile</a>"
 );
-
+    
+activePursuit++;
+relativeKnown++;
+totalRecords++;
+    
 var brown = L.marker([15.5108, 121.0378], {icon: greenIcon});
 markers.addLayer(brown);
 brown.bindPopup(
@@ -196,7 +225,11 @@ brown.bindPopup(
 "Relative Location: Known<br><br>" +
 "<a href='https://dpaa-mil.sites.crmforce.mil/dpaaProfile?id=a0Jt0000000Qrg2EAC' target='_blank'>Open DPAA Profile</a>"
 );
-
+    
+activePursuit++;
+relativeKnown++;
+totalRecords++;
+    
 // NON-RECOVERABLE (BLACK)
 
 var amp = L.marker([11.05,124.40], {icon: blackIcon});
@@ -208,6 +241,10 @@ amp.bindPopup(
 "Relative Location: Known<br><br>" +
 "No DPAA Profile Available"
 );
+    
+nonRecoverable++;
+relativeKnown++;
+totalRecords++;
 
 // RELATIVE LOCATION UNKNOWN (RED OFFSHORE MARKER)
 
@@ -220,6 +257,24 @@ unknown.bindPopup(
 "Status: Non-Recoverable<br>" +
 "No DPAA Profile Available"
 );
+
+nonRecoverable++;
+relativeUnknown++;
+totalRecords++;
+
+activePursuit++;
+relativeKnown++;
+totalRecords++;   
+
+document.getElementById("totalRecords").textContent = totalRecords;
+
+document.getElementById("activePursuit").textContent = activePursuit;
+
+document.getElementById("nonRecoverable").textContent = nonRecoverable;
+
+document.getElementById("relativeKnown").textContent = relativeKnown;
+
+document.getElementById("relativeUnknown").textContent = relativeUnknown;
 
 map.addLayer(markers);
     
