@@ -140,9 +140,11 @@ var redIcon = new L.Icon({
 var arrington = L.marker([13.95,122.30], {icon: greenIcon});
 markers.addLayer(arrington);
 arrington.bindPopup(
-"<b>Pvt. Carroll J. Arrington</b><br>" +
+"<b>Pvt Carroll J. Arrington</b><br>" +
 "Status: Active Pursuit<br>" +
-"Location: Near Calauag and Basiad River"
+"Location: Near Calauag and Basiad River<br>" +
+"Relative Location: Known<br><br>" +
+"<a href='https://dpaa-mil.sites.crmforce.mil/dpaaProfile?id=a0Jt000001Hu1pyEAB' target='_blank'>Open DPAA Profile</a>"
 );
 
 var abel = L.marker([15.5108,121.0378], {icon: greenIcon});
@@ -150,7 +152,9 @@ markers.addLayer(abel);
 abel.bindPopup(
 "<b>TEC 4 Charles E. Abel</b><br>" +
 "Status: Active Pursuit<br>" +
-"Location: Cabanatuan Prison Camp"
+"Location: Cabanatuan Prison Camp<br>" +
+"Relative Location: Known<br><br>" +
+"No DPAA Profile Available"
 );
 
 var carey = L.marker([14.62, 120.58], {icon: greenIcon});
@@ -158,7 +162,9 @@ markers.addLayer(carey);
 carey.bindPopup(
 "<b>Pvt Murl J. Carey</b><br>" +
 "Status: Active Pursuit<br>" +
-"Location: Orion"
+"Location: Orion<br>" +
+"Relative Location: Known<br><br>" +
+"<a href='https://dpaa-mil.sites.crmforce.mil/dpaaProfile?id=a0Jt000001nI58nEAC' target='_blank'>Open DPAA Profile</a>"
 );
 
 var bodrero = L.marker([7.85, 123.15], {icon: greenIcon});
@@ -166,7 +172,9 @@ markers.addLayer(bodrero);
 bodrero.bindPopup(
 "<b>Staff Sgt Glen L. Bodrero</b><br>" +
 "Status: Active Pursuit<br>" +
-"Location: Mindanao Island"
+"Location: Zamboanga Mountains<br>" +
+"Relative Location: Known<br><br>" +
+"<a href='https://dpaa-mil.sites.crmforce.mil/dpaaProfile?id=a0Jt0000000XmNzEAK' target='_blank'>Open DPAA Profile</a>"
 );
 
 var barlow = L.marker([15.5108, 121.0378], {icon: greenIcon});
@@ -174,7 +182,9 @@ markers.addLayer(barlow);
 barlow.bindPopup(
 "<b>Sea1 Woods R. Barlow</b><br>" +
 "Status: Active Pursuit<br>" +
-"Location: Cabanatuan Prison Camp"
+"Location: Cabanatuan Prison Camp<br>" +
+"Relative Location: Known<br><br>" +
+"<a href='https://dpaa-mil.sites.crmforce.mil/dpaaProfile?id=a0Jt0000000XdeJEAS' target='_blank'>Open DPAA Profile</a>"
 );
 
 var brown = L.marker([15.5108, 121.0378], {icon: greenIcon});
@@ -182,7 +192,9 @@ markers.addLayer(brown);
 brown.bindPopup(
 "<b>Pvt Vincent C. Brown</b><br>" +
 "Status: Active Pursuit<br>" +
-"Location: Cabanatuan Prison Camp"
+"Location: Cabanatuan Prison Camp<br>" +
+"Relative Location: Known<br><br>" +
+"<a href='https://dpaa-mil.sites.crmforce.mil/dpaaProfile?id=a0Jt0000000Qrg2EAC' target='_blank'>Open DPAA Profile</a>"
 );
 
 // NON-RECOVERABLE (BLACK)
@@ -192,7 +204,9 @@ markers.addLayer(amp);
 amp.bindPopup(
 "<b>Sea2 Charles H. Amp</b><br>" +
 "Status: Non-Recoverable<br>" +
-"Location: West Side of Leyte Island"
+"Location: West Side of Leyte Island<br>" +
+"Relative Location: Known<br><br>" +
+"No DPAA Profile Available"
 );
 
 // RELATIVE LOCATION UNKNOWN (RED OFFSHORE MARKER)
@@ -204,6 +218,7 @@ unknown.bindPopup(
 "1 Service Member<br><br>" +
 "S1C Stanley J. Abcunas<br>" +
 "Status: Non-Recoverable"
+"No DPAA Profile Available"
 );
 
 
