@@ -40,6 +40,11 @@
     margin-bottom: 5px;
 }
     </style>
+    <link rel="stylesheet"
+href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
 </head>
 
 <body>
@@ -70,10 +75,12 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>    
 <script>
 
 var map = L.map('map').setView([12.8797, 121.7740], 6);
 
+   var markers = L.markerClusterGroup(); 
 L.tileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
@@ -82,42 +89,48 @@ L.tileLayer(
 ).addTo(map);
 // ACTIVE PURSUIT (GREEN)
 
-var arrington = L.marker([13.95, 122.30]).addTo(map);
+var arrington = L.marker([13.95, 122.30]);
+markers.addLayer(arrington);
 arrington.bindPopup(
 "<b>Pvt. Carroll J. Arrington</b><br>" +
 "Status: Active Pursuit<br>" +
 "Location: Near Calauag and Basiad River"
 );
 
-var abel = L.marker([15.5108, 121.0378]).addTo(map);
+var abel = L.marker([15.5108,121.0378]);
+markers.addLayer(abel);
 abel.bindPopup(
 "<b>TEC 4 Charles E. Abel</b><br>" +
 "Status: Active Pursuit<br>" +
 "Location: Cabanatuan Prison Camp"
 );
 
-var carey = L.marker([14.62, 120.58]).addTo(map);
+var carey = L.marker([14.62, 120.58]);
+markers.addLayer(carey);
 carey.bindPopup(
 "<b>Pvt Murl J. Carey</b><br>" +
 "Status: Active Pursuit<br>" +
 "Location: Orion"
 );
 
-var bodrero = L.marker([7.85, 123.15]).addTo(map);
+var bodrero = L.marker([7.85, 123.15]);
+markers.addLayer(bodrero);
 bodrero.bindPopup(
 "<b>Staff Sgt Glen L. Bodrero</b><br>" +
 "Status: Active Pursuit<br>" +
 "Location: Mindanao Island"
 );
 
-var barlow = L.marker([15.5108, 121.0378]).addTo(map);
+var barlow = L.marker([15.5108, 121.0378]);
+markers.addLayer(barlow);
 barlow.bindPopup(
 "<b>Sea1 Woods R. Barlow</b><br>" +
 "Status: Active Pursuit<br>" +
 "Location: Cabanatuan Prison Camp"
 );
 
-var brown = L.marker([15.5108, 121.0378]).addTo(map);
+var brown = L.marker([15.5108, 121.0378]);
+markers.addLayer(brown);
 brown.bindPopup(
 "<b>Pvt Vincent C. Brown</b><br>" +
 "Status: Active Pursuit<br>" +
@@ -126,7 +139,8 @@ brown.bindPopup(
 
 // NON-RECOVERABLE (BLACK)
 
-var amp = L.marker([11.05, 124.40]).addTo(map);
+var amp = L.marker([11.05, 124.40]);
+markers.addLayer(amp);
 amp.bindPopup(
 "<b>Sea2 Charles H. Amp</b><br>" +
 "Status: Non-Recoverable<br>" +
@@ -135,7 +149,8 @@ amp.bindPopup(
 
 // RELATIVE LOCATION UNKNOWN (RED OFFSHORE MARKER)
 
-var unknown = L.marker([14.5, 118.5]).addTo(map);
+var unknown = L.marker([14.5, 118.5]);
+markers.addLayer(unknown);
 unknown.bindPopup(
 "<b>Relative Location Unknown</b><br>" +
 "1 Service Member<br><br>" +
@@ -166,7 +181,7 @@ function toggleStats() {
     }
 
 }
-
+map.addLayer(markers);
 </script>
 </body>
 </html>
