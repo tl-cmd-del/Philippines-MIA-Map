@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sheet Test</title>
+</head>
+<body>
+
+<h2>Spreadsheet Test</h2>
+
+<div id="output"></div>
+
+<script>
+
+fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTJnh83mbPcdblXJZsSJv69JkEXEUUK0UQlyB6Vljf1xJN2vN0PRMQtQZ2NtEnjkhjYb6GCGniFbyii/pub?output=csv")
+.then(response => response.text())
+.then(data => {
+
+    document.getElementById("output").innerHTML =
+        "<pre>" + data + "</pre>";
+
+})
+.catch(error => {
+
+    document.getElementById("output").innerHTML =
+        "ERROR: " + error;
+
+});
+
+</script>
+
+</body>
+</html>
