@@ -67,6 +67,15 @@ href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.c
 <p>🔵 Relative Location Known: 7</p>
 <p>🔴 Relative Location Unknown: 1</p>
 
+<hr>
+
+<b>Legend</b><br>
+
+🟢 Active Pursuit<br>
+⚫ Non-Recoverable<br>
+🟡 Deferred<br>
+🟠 Under Review<br>
+🔴 Relative Location Unknown    
 </div>
 
 </div>
@@ -89,7 +98,46 @@ L.tileLayer(
 ).addTo(map);
 // ACTIVE PURSUIT (GREEN)
 
-var arrington = L.marker([13.95, 122.30]);
+    var greenIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34]
+});
+
+var blackIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34]
+});
+
+var yellowIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-gold.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34]
+});
+
+var orangeIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34]
+});
+
+var redIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34]
+});
+var arrington = L.marker([13.95,122.30], {icon: greenIcon});
 markers.addLayer(arrington);
 arrington.bindPopup(
 "<b>Pvt. Carroll J. Arrington</b><br>" +
@@ -97,7 +145,7 @@ arrington.bindPopup(
 "Location: Near Calauag and Basiad River"
 );
 
-var abel = L.marker([15.5108,121.0378]);
+var abel = L.marker([15.5108,121.0378], {icon: greenIcon});
 markers.addLayer(abel);
 abel.bindPopup(
 "<b>TEC 4 Charles E. Abel</b><br>" +
@@ -105,7 +153,7 @@ abel.bindPopup(
 "Location: Cabanatuan Prison Camp"
 );
 
-var carey = L.marker([14.62, 120.58]);
+var carey = L.marker([14.62, 120.58], {icon: greenIcon});
 markers.addLayer(carey);
 carey.bindPopup(
 "<b>Pvt Murl J. Carey</b><br>" +
@@ -113,7 +161,7 @@ carey.bindPopup(
 "Location: Orion"
 );
 
-var bodrero = L.marker([7.85, 123.15]);
+var bodrero = L.marker([7.85, 123.15], {icon: greenIcon});
 markers.addLayer(bodrero);
 bodrero.bindPopup(
 "<b>Staff Sgt Glen L. Bodrero</b><br>" +
@@ -121,7 +169,7 @@ bodrero.bindPopup(
 "Location: Mindanao Island"
 );
 
-var barlow = L.marker([15.5108, 121.0378]);
+var barlow = L.marker([15.5108, 121.0378], {icon: greenIcon});
 markers.addLayer(barlow);
 barlow.bindPopup(
 "<b>Sea1 Woods R. Barlow</b><br>" +
@@ -129,7 +177,7 @@ barlow.bindPopup(
 "Location: Cabanatuan Prison Camp"
 );
 
-var brown = L.marker([15.5108, 121.0378]);
+var brown = L.marker([15.5108, 121.0378], {icon: greenIcon});
 markers.addLayer(brown);
 brown.bindPopup(
 "<b>Pvt Vincent C. Brown</b><br>" +
@@ -139,7 +187,7 @@ brown.bindPopup(
 
 // NON-RECOVERABLE (BLACK)
 
-var amp = L.marker([11.05, 124.40]);
+var amp = L.marker([11.05,124.40], {icon: blackIcon});
 markers.addLayer(amp);
 amp.bindPopup(
 "<b>Sea2 Charles H. Amp</b><br>" +
@@ -149,7 +197,7 @@ amp.bindPopup(
 
 // RELATIVE LOCATION UNKNOWN (RED OFFSHORE MARKER)
 
-var unknown = L.marker([14.5, 118.5]);
+var unknown = L.marker([14.5,118.5], {icon: redIcon});
 markers.addLayer(unknown);
 unknown.bindPopup(
 "<b>Relative Location Unknown</b><br>" +
