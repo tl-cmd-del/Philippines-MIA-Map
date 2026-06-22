@@ -43,6 +43,28 @@ font-family:Arial;
 ">
 Loading statistics...
 </div>
+    <div id="searchBox"
+style="
+position:absolute;
+top:10px;
+left:10px;
+z-index:1000;
+background:white;
+padding:10px;
+border-radius:8px;
+box-shadow:0 0 5px rgba(0,0,0,.3);
+">
+
+<input
+id="searchInput"
+type="text"
+placeholder="Search Last Name">
+
+<button onclick="searchPerson()">
+Search
+</button>
+
+</div>
 <div id="map"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -102,7 +124,8 @@ var deferred = 0;
 var underReview = 0;
 
 var relativeKnown = 0;
-var relativeUnknown = 0;    
+var relativeUnknown = 0; 
+    var serviceMembers = {};
 fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTJnh83mbPcdblXJZsSJv69JkEXEUUK0UQlyB6Vljf1xJN2vN0PRMQtQZ2NtEnjkhjYb6GCGniFbyii/pub?output=csv")
 
 .then(response => response.text())
@@ -179,9 +202,12 @@ var marker = L.marker(
             relativeLocation + "<br><br>" +
 
             "<a href='" + dpaaLink +
-            "' target='_blank'>🔗 Open DPAA Profile</a>"
+            "' target='_blank'>Open DPAA Profile</a>"
         );
 
+       serviceMembers[
+    lastName.toLowerCase().trim()
+] = marker;
         
        markers.addLayer(marker); 
     }
