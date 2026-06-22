@@ -274,6 +274,54 @@ function searchPerson() {
     }
 
 }  
+
+    function applyFilters() {
+
+    markers.clearLayers();
+
+    var showActive =
+    document.getElementById("showActive").checked;
+
+    var showNonRecoverable =
+    document.getElementById("showNonRecoverable").checked;
+
+    var showDeferred =
+    document.getElementById("showDeferred").checked;
+
+    var showUnderReview =
+    document.getElementById("showUnderReview").checked;
+
+    for(let i = 0; i < allMarkers.length; i++) {
+
+        var item = allMarkers[i];
+
+        var status =
+        item.status.toLowerCase();
+
+        var visible = false;
+
+        if(showActive &&
+           status.includes("active"))
+            visible = true;
+
+        if(showNonRecoverable &&
+           status.includes("non"))
+            visible = true;
+
+        if(showDeferred &&
+           status.includes("deferred"))
+            visible = true;
+
+        if(showUnderReview &&
+           status.includes("under review"))
+            visible = true;
+
+        if(visible)
+            markers.addLayer(item.marker);
+
+    }
+
+}
    function toggleStats() {
 
     var content =
