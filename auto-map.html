@@ -49,9 +49,16 @@ style="width:100%;margin-bottom:5px;">
 </button>
 
 <div id="statsContent">
-Loading statistics...
+
+<div id="showingRecords">
+Showing: 0 of 0 Records
 </div>
 
+<br>
+
+Loading statistics...
+
+</div>
 </div>
     <div id="searchBox"
 style="
@@ -299,6 +306,9 @@ var underReview = 0;
 
 var relativeKnown = 0;
 var relativeUnknown = 0; 
+
+var visibleRecords = 0;
+    
     var serviceMembers = {};
 
    var allMarkers = [];
@@ -445,6 +455,8 @@ function searchPerson() {
 
     markers.clearLayers();
 
+    visibleRecords = 0;    
+
     var showActive =
     document.getElementById("showActive").checked;
 
@@ -583,10 +595,16 @@ if(showCivilian &&
 )
 {
     markers.addLayer(item.marker);
+visibleRecords++;
 }
 
     }
-
+document.getElementById("showingRecords").innerHTML =
+"Showing: " +
+visibleRecords +
+" of " +
+totalRecords +
+" Records";
 }
 function toggleFilters() {
 
