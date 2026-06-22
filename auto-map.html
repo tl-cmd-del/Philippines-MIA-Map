@@ -505,8 +505,9 @@ document.getElementById("showUnknown").checked;
         var branchVisible = false;
 
 var branch =
-item.branch.toLowerCase();
-
+item.branch.toLowerCase().trim();
+console.log(branch);
+        
        var relative =
 item.relativeLocation.toLowerCase();
 
@@ -531,32 +532,32 @@ if(showMarineCorps &&
    branch === "marine corps")
     branchVisible = true;
 
-if(showArmyAirForces &&
-   branch.includes("army air"))
-    branchVisible = true;
-
-if(showCoastGuard &&
-   branch.includes("coast"))
-    branchVisible = true;
-
 if(showMarineReserve &&
-   branch.includes("marine corps reserve"))
+   branch === "marine corps reserve")
+    branchVisible = true;
+
+if(showArmyAirForces &&
+   branch === "army air force")
     branchVisible = true;
 
 if(showAirForce &&
-   branch.includes("air force"))
+   branch === "air force")
     branchVisible = true;
 
 if(showNavyReserve &&
-   branch.includes("navy reserve"))
+   branch === "navy reserve")
     branchVisible = true;
 
 if(showMerchantMarine &&
-   branch.includes("merchant"))
+   branch === "merchant marine")
+    branchVisible = true;
+
+if(showCoastGuard &&
+   branch === "coast guard")
     branchVisible = true;
 
 if(showCivilian &&
-   branch.includes("civilian"))
+   branch === "civilian")
     branchVisible = true;
         
         if(showActive &&
