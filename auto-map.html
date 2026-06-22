@@ -421,6 +421,7 @@ document.getElementById("statsContent").innerHTML =
 "🔵 Relative Location Known: " + relativeKnown + "<br>" +
 "🔴 Relative Location Unknown: " + relativeUnknown;
    map.addLayer(markers); 
+    applyFilters();
 });
 
 function searchPerson() {
@@ -631,7 +632,21 @@ function toggleFilters() {
 function toggleStats() {
 
     var content =
-    document.getElementById("statsContent");
+   document.getElementById("statsContent").innerHTML =
+
+'<div id="showingRecords"></div><br>' +
+
+"<b>Philippines MIA Map</b><br><br>" +
+
+"Total Records: " + totalRecords + "<br><br>" +
+
+"🟢 Active Pursuit: " + activePursuit + "<br>" +
+"⚫ Non-Recoverable: " + nonRecoverable + "<br>" +
+"🟡 Deferred: " + deferred + "<br>" +
+"🟠 Under Review: " + underReview + "<br><br>" +
+
+"🔵 Relative Location Known: " + relativeKnown + "<br>" +
+"🔴 Relative Location Unknown: " + relativeUnknown;
 
     var button =
     document.getElementById("statsButton");
