@@ -125,6 +125,63 @@ Under Review
 
 </div>
 
+<div id="branchBox"
+style="
+position:absolute;
+top:260px;
+left:10px;
+z-index:1000;
+background:white;
+padding:10px;
+border-radius:8px;
+box-shadow:0 0 5px rgba(0,0,0,.3);
+font-family:Arial;
+">
+
+<b>Branches</b><br><br>
+
+<label>
+<input type="checkbox"
+id="showArmy"
+checked
+onchange="applyFilters()">
+Army
+</label><br>
+
+<label>
+<input type="checkbox"
+id="showNavy"
+checked
+onchange="applyFilters()">
+Navy
+</label><br>
+
+<label>
+<input type="checkbox"
+id="showMarineCorps"
+checked
+onchange="applyFilters()">
+Marine Corps
+</label><br>
+
+<label>
+<input type="checkbox"
+id="showArmyAirForces"
+checked
+onchange="applyFilters()">
+Army Air Forces
+</label><br>
+
+<label>
+<input type="checkbox"
+id="showCoastGuard"
+checked
+onchange="applyFilters()">
+Coast Guard
+</label>
+
+</div>
+    
 <div id="map"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -279,7 +336,8 @@ markers.addLayer(marker);
 
 allMarkers.push({
     marker: marker,
-    status: status
+    status: status,
+    branch: branch
 });
     }
 document.getElementById("statsContent").innerHTML =
@@ -341,6 +399,21 @@ function searchPerson() {
     var showUnderReview =
     document.getElementById("showUnderReview").checked;
 
+var showArmy =
+document.getElementById("showArmy").checked;
+
+var showNavy =
+document.getElementById("showNavy").checked;
+
+var showMarineCorps =
+document.getElementById("showMarineCorps").checked;
+
+var showArmyAirForces =
+document.getElementById("showArmyAirForces").checked;
+
+var showCoastGuard =
+document.getElementById("showCoastGuard").checked;
+        
     for(let i = 0; i < allMarkers.length; i++) {
 
         var item = allMarkers[i];
@@ -350,6 +423,31 @@ function searchPerson() {
 
         var visible = false;
 
+        var branchVisible = false;
+
+var branch =
+item.branch.toLowerCase();
+
+if(showArmy &&
+   branch.includes("army"))
+    branchVisible = true;
+
+if(showNavy &&
+   branch.includes("navy"))
+    branchVisible = true;
+
+if(showMarineCorps &&
+   branch.includes("marine"))
+    branchVisible = true;
+
+if(showArmyAirForces &&
+   branch.includes("army air"))
+    branchVisible = true;
+
+if(showCoastGuard &&
+   branch.includes("coast"))
+    branchVisible = true;
+        
         if(showActive &&
            status.includes("active"))
             visible = true;
@@ -366,8 +464,8 @@ function searchPerson() {
            status.includes("under review"))
             visible = true;
 
-        if(visible)
-            markers.addLayer(item.marker);
+        if(visible && branchVisible)
+    markers.addLayer(item.marker);
 
     }
 
