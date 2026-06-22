@@ -472,6 +472,21 @@ document.getElementById("showArmyAirForces").checked;
 var showCoastGuard =
 document.getElementById("showCoastGuard").checked;
 
+var showMarineReserve =
+document.getElementById("showMarineReserve").checked;
+
+var showAirForce =
+document.getElementById("showAirForce").checked;
+
+var showNavyReserve =
+document.getElementById("showNavyReserve").checked;
+
+var showMerchantMarine =
+document.getElementById("showMerchantMarine").checked;
+
+var showCivilian =
+document.getElementById("showCivilian").checked;
+
 var showKnown =
 document.getElementById("showKnown").checked;
 
@@ -523,6 +538,26 @@ if(showArmyAirForces &&
 if(showCoastGuard &&
    branch.includes("coast"))
     branchVisible = true;
+
+if(showMarineReserve &&
+   branch.includes("marine corps reserve"))
+    branchVisible = true;
+
+if(showAirForce &&
+   branch.includes("air force"))
+    branchVisible = true;
+
+if(showNavyReserve &&
+   branch.includes("navy reserve"))
+    branchVisible = true;
+
+if(showMerchantMarine &&
+   branch.includes("merchant"))
+    branchVisible = true;
+
+if(showCivilian &&
+   branch.includes("civilian"))
+    branchVisible = true;
         
         if(showActive &&
            status.includes("active"))
@@ -552,9 +587,29 @@ if(showCoastGuard &&
     }
 
 }
-   function toggleStats() {
-
 function toggleFilters() {
+
+    var content =
+    document.getElementById("filterContent");
+
+    var button =
+    document.getElementById("filterButton");
+
+    if(content.style.display === "none") {
+
+        content.style.display = "block";
+        button.innerHTML = "▼ Filters";
+
+    } else {
+
+        content.style.display = "none";
+        button.innerHTML = "▶ Filters";
+
+    }
+
+}
+
+function toggleStats() {
 
     var content =
     document.getElementById("filterContent");
