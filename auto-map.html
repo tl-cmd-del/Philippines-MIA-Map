@@ -138,17 +138,20 @@ fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTJnh83mbPcdblXJZsSJv69Jk
 
         const cols = rows[i].split(",");
 
-        if(cols.length < 9) continue;
+        if(cols.length < 10) continue;
 
         const rank = cols[0];
-        const firstName = cols[1];
-        const lastName = cols[2];
-        const location = cols[3];
-        const relativeLocation = cols[4];
-        const status = cols[5];
-        const dpaaLink = cols[6];
-        const latitude = parseFloat(cols[7]);
-        const longitude = parseFloat(cols[8]);
+const firstName = cols[1];
+const lastName = cols[2];
+const branch = cols[3];
+
+const location = cols[4];
+const relativeLocation = cols[5];
+const status = cols[6];
+const dpaaLink = cols[7];
+
+const latitude = parseFloat(cols[8]);
+const longitude = parseFloat(cols[9]);
 
 totalRecords++;
 
