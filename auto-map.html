@@ -76,7 +76,7 @@ Search
 
 </div>
 
-    <div id="filterBox"
+<div id="filterBox"
 style="
 position:absolute;
 top:70px;
@@ -89,7 +89,15 @@ box-shadow:0 0 5px rgba(0,0,0,.3);
 font-family:Arial;
 ">
 
-<b>Filters</b><br><br>
+<button id="filterButton"
+onclick="toggleFilters()"
+style="width:100%;margin-bottom:5px;">
+▼ Filters
+</button>
+
+<div id="filterContent">
+
+<b>Status</b><br>
 
 <label>
 <input type="checkbox"
@@ -123,22 +131,9 @@ onchange="applyFilters()">
 Under Review
 </label>
 
-</div>
+<hr>
 
-<div id="branchBox"
-style="
-position:absolute;
-top:260px;
-left:10px;
-z-index:1000;
-background:white;
-padding:10px;
-border-radius:8px;
-box-shadow:0 0 5px rgba(0,0,0,.3);
-font-family:Arial;
-">
-
-<b>Branches</b><br><br>
+<b>Branch</b><br>
 
 <label>
 <input type="checkbox"
@@ -166,6 +161,14 @@ Marine Corps
 
 <label>
 <input type="checkbox"
+id="showMarineReserve"
+checked
+onchange="applyFilters()">
+Marine Corps Reserve
+</label><br>
+
+<label>
+<input type="checkbox"
 id="showArmyAirForces"
 checked
 onchange="applyFilters()">
@@ -174,28 +177,47 @@ Army Air Forces
 
 <label>
 <input type="checkbox"
+id="showAirForce"
+checked
+onchange="applyFilters()">
+Air Force
+</label><br>
+
+<label>
+<input type="checkbox"
+id="showNavyReserve"
+checked
+onchange="applyFilters()">
+Navy Reserve
+</label><br>
+
+<label>
+<input type="checkbox"
+id="showMerchantMarine"
+checked
+onchange="applyFilters()">
+Merchant Marine
+</label><br>
+
+<label>
+<input type="checkbox"
 id="showCoastGuard"
 checked
 onchange="applyFilters()">
 Coast Guard
+</label><br>
+
+<label>
+<input type="checkbox"
+id="showCivilian"
+checked
+onchange="applyFilters()">
+Civilian
 </label>
 
-</div>
+<hr>
 
-<div id="relativeBox"
-style="
-position:absolute;
-top:430px;
-left:10px;
-z-index:1000;
-background:white;
-padding:10px;
-border-radius:8px;
-box-shadow:0 0 5px rgba(0,0,0,.3);
-font-family:Arial;
-">
-
-<b>Relative Location</b><br><br>
+<b>Relative Location</b><br>
 
 <label>
 <input type="checkbox"
@@ -212,6 +234,8 @@ checked
 onchange="applyFilters()">
 Unknown
 </label>
+
+</div>
 
 </div>
     
@@ -530,6 +554,28 @@ if(showCoastGuard &&
 }
    function toggleStats() {
 
+function toggleFilters() {
+
+    var content =
+    document.getElementById("filterContent");
+
+    var button =
+    document.getElementById("filterButton");
+
+    if(content.style.display === "none") {
+
+        content.style.display = "block";
+        button.innerHTML = "▼ Filters";
+
+    } else {
+
+        content.style.display = "none";
+        button.innerHTML = "▶ Filters";
+
+    }
+
+}
+       
     var content =
     document.getElementById("statsContent");
 
