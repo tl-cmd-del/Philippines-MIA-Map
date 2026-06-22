@@ -38,6 +38,41 @@ attribution:'© OpenStreetMap contributors'
 }
 ).addTo(map);
 
+var greenIcon = new L.Icon({
+    iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+    shadowUrl:'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize:[25,41],
+    iconAnchor:[12,41]
+});
+
+var blackIcon = new L.Icon({
+    iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png',
+    shadowUrl:'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize:[25,41],
+    iconAnchor:[12,41]
+});
+
+var yellowIcon = new L.Icon({
+    iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-gold.png',
+    shadowUrl:'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize:[25,41],
+    iconAnchor:[12,41]
+});
+
+var orangeIcon = new L.Icon({
+    iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png',
+    shadowUrl:'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize:[25,41],
+    iconAnchor:[12,41]
+});
+
+var redIcon = new L.Icon({
+    iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+    shadowUrl:'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize:[25,41],
+    iconAnchor:[12,41]
+});
+    
 fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTJnh83mbPcdblXJZsSJv69JkEXEUUK0UQlyB6Vljf1xJN2vN0PRMQtQZ2NtEnjkhjYb6GCGniFbyii/pub?output=csv")
 
 .then(response => response.text())
@@ -65,7 +100,24 @@ fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTJnh83mbPcdblXJZsSJv69Jk
         if(isNaN(latitude) || isNaN(longitude))
             continue;
 
-        var marker = L.marker([latitude, longitude]);
+       var markerIcon = greenIcon;
+
+if(status.toLowerCase().includes("non-recoverable"))
+    markerIcon = blackIcon;
+
+if(status.toLowerCase().includes("deferred"))
+    markerIcon = yellowIcon;
+
+if(status.toLowerCase().includes("under review"))
+    markerIcon = orangeIcon;
+
+if(relativeLocation.toLowerCase() === "no")
+    markerIcon = redIcon;
+
+var marker = L.marker(
+    [latitude, longitude],
+    {icon: markerIcon}
+);
 
         marker.bindPopup(
             "<b>" + rank + " " +
