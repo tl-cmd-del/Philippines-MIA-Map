@@ -41,7 +41,17 @@ border-radius:8px;
 box-shadow:0 0 5px rgba(0,0,0,.3);
 font-family:Arial;
 ">
+
+<button id="statsButton"
+onclick="toggleStats()"
+style="width:100%;margin-bottom:5px;">
+▼ Statistics
+</button>
+
+<div id="statsContent">
 Loading statistics...
+</div>
+
 </div>
     <div id="searchBox"
 style="
@@ -126,6 +136,9 @@ var underReview = 0;
 var relativeKnown = 0;
 var relativeUnknown = 0; 
     var serviceMembers = {};
+
+   var allMarkers = [];
+    
 fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTJnh83mbPcdblXJZsSJv69JkEXEUUK0UQlyB6Vljf1xJN2vN0PRMQtQZ2NtEnjkhjYb6GCGniFbyii/pub?output=csv")
 
 .then(response => response.text())
@@ -211,10 +224,15 @@ var marker = L.marker(
        serviceMembers[
     lastName.toLowerCase().trim()
 ] = marker;
-        
-       markers.addLayer(marker); 
+
+markers.addLayer(marker);
+
+allMarkers.push({
+    marker: marker,
+    status: status
+});
     }
-document.getElementById("statsBox").innerHTML =
+document.getElementById("statsContent").innerHTML =
 "<b>Philippines MIA Map</b><br><br>" +
 
 "Total Records: " + totalRecords + "<br><br>" +
@@ -255,7 +273,28 @@ function searchPerson() {
 
     }
 
-}    
+}  
+   function toggleStats() {
+
+    var content =
+    document.getElementById("statsContent");
+
+    var button =
+    document.getElementById("statsButton");
+
+    if(content.style.display === "none") {
+
+        content.style.display = "block";
+        button.innerHTML = "▼ Statistics";
+
+    } else {
+
+        content.style.display = "none";
+        button.innerHTML = "▶ Statistics";
+
+    }
+
+} 
 </script>
 
 </body>
