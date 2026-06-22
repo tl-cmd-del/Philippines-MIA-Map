@@ -29,6 +29,20 @@ href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.c
 
 <body>
 
+<div id="statsBox"
+style="
+position:absolute;
+top:10px;
+right:10px;
+z-index:1000;
+background:white;
+padding:10px;
+border-radius:8px;
+box-shadow:0 0 5px rgba(0,0,0,.3);
+font-family:Arial;
+">
+Loading statistics...
+</div>
 <div id="map"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -79,7 +93,16 @@ var redIcon = new L.Icon({
     iconSize:[25,41],
     iconAnchor:[12,41]
 });
-    
+
+var totalRecords = 0;
+
+var activePursuit = 0;
+var nonRecoverable = 0;
+var deferred = 0;
+var underReview = 0;
+
+var relativeKnown = 0;
+var relativeUnknown = 0;    
 fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTJnh83mbPcdblXJZsSJv69JkEXEUUK0UQlyB6Vljf1xJN2vN0PRMQtQZ2NtEnjkhjYb6GCGniFbyii/pub?output=csv")
 
 .then(response => response.text())
@@ -104,6 +127,25 @@ fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTJnh83mbPcdblXJZsSJv69Jk
         const latitude = parseFloat(cols[7]);
         const longitude = parseFloat(cols[8]);
 
+totalRecords++;
+
+if(status.toLowerCase().includes("active"))
+    activePursuit++;
+
+if(status.toLowerCase().includes("non"))
+    nonRecoverable++;
+
+if(status.toLowerCase().includes("deferred"))
+    deferred++;
+
+if(status.toLowerCase().includes("under review"))
+    underReview++;
+
+if(relativeLocation.toLowerCase() === "yes")
+    relativeKnown++;
+else
+    relativeUnknown++;
+        
         if(isNaN(latitude) || isNaN(longitude))
             continue;
 
@@ -143,7 +185,18 @@ var marker = L.marker(
         
        markers.addLayer(marker); 
     }
+document.getElementById("statsBox").innerHTML =
+"<b>Philippines MIA Map</b><br><br>" +
 
+"Total Records: " + totalRecords + "<br><br>" +
+
+"🟢 Active Pursuit: " + activePursuit + "<br>" +
+"⚫ Non-Recoverable: " + nonRecoverable + "<br>" +
+"🟡 Deferred: " + deferred + "<br>" +
+"🟠 Under Review: " + underReview + "<br><br>" +
+
+"🔵 Relative Location Known: " + relativeKnown + "<br>" +
+"🔴 Relative Location Unknown: " + relativeUnknown;
    map.addLayer(markers); 
 });
 
