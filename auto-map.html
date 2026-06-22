@@ -181,6 +181,39 @@ Coast Guard
 </label>
 
 </div>
+
+<div id="relativeBox"
+style="
+position:absolute;
+top:430px;
+left:10px;
+z-index:1000;
+background:white;
+padding:10px;
+border-radius:8px;
+box-shadow:0 0 5px rgba(0,0,0,.3);
+font-family:Arial;
+">
+
+<b>Relative Location</b><br><br>
+
+<label>
+<input type="checkbox"
+id="showKnown"
+checked
+onchange="applyFilters()">
+Known
+</label><br>
+
+<label>
+<input type="checkbox"
+id="showUnknown"
+checked
+onchange="applyFilters()">
+Unknown
+</label>
+
+</div>
     
 <div id="map"></div>
 
@@ -337,7 +370,8 @@ markers.addLayer(marker);
 allMarkers.push({
     marker: marker,
     status: status,
-    branch: branch
+    branch: branch,
+    relativeLocation: relativeLocation
 });
     }
 document.getElementById("statsContent").innerHTML =
@@ -413,6 +447,12 @@ document.getElementById("showArmyAirForces").checked;
 
 var showCoastGuard =
 document.getElementById("showCoastGuard").checked;
+
+var showKnown =
+document.getElementById("showKnown").checked;
+
+var showUnknown =
+document.getElementById("showUnknown").checked;
         
     for(let i = 0; i < allMarkers.length; i++) {
 
@@ -427,6 +467,18 @@ document.getElementById("showCoastGuard").checked;
 
 var branch =
 item.branch.toLowerCase();
+
+       var relative =
+item.relativeLocation.toLowerCase();
+
+var relativeVisible = false; 
+        if(showKnown &&
+   relative === "yes")
+    relativeVisible = true;
+
+if(showUnknown &&
+   relative === "no")
+    relativeVisible = true;
 
 if(showArmy &&
    branch.includes("army"))
@@ -464,8 +516,14 @@ if(showCoastGuard &&
            status.includes("under review"))
             visible = true;
 
-        if(visible && branchVisible)
+        if(
+    visible &&
+    branchVisible &&
+    relativeVisible
+)
+{
     markers.addLayer(item.marker);
+}
 
     }
 
