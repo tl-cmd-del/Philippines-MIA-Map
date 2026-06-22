@@ -226,8 +226,35 @@ document.getElementById("statsBox").innerHTML =
    map.addLayer(markers); 
 });
 
-    
+function searchPerson() {
+
+    var name =
+    document.getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
+
+    if(serviceMembers[name]) {
+
+        var marker = serviceMembers[name];
+
+        map.setView(
+            marker.getLatLng(),
+            10
+        );
+
+        marker.openPopup();
+
+    }
+    else {
+
+        alert("Service member not found");
+
+    }
+
+}    
 </script>
 
 </body>
 </html>
+aww
