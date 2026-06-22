@@ -520,15 +520,15 @@ if(showUnknown &&
     relativeVisible = true;
 
 if(showArmy &&
-   branch.includes("army"))
+   branch === "army")
     branchVisible = true;
 
 if(showNavy &&
-   branch.includes("navy"))
+   branch === "navy")
     branchVisible = true;
 
 if(showMarineCorps &&
-   branch.includes("marine"))
+   branch === "marine corps")
     branchVisible = true;
 
 if(showArmyAirForces &&
@@ -612,26 +612,6 @@ function toggleFilters() {
 function toggleStats() {
 
     var content =
-    document.getElementById("filterContent");
-
-    var button =
-    document.getElementById("filterButton");
-
-    if(content.style.display === "none") {
-
-        content.style.display = "block";
-        button.innerHTML = "▼ Filters";
-
-    } else {
-
-        content.style.display = "none";
-        button.innerHTML = "▶ Filters";
-
-    }
-
-}
-       
-    var content =
     document.getElementById("statsContent");
 
     var button =
@@ -649,7 +629,7 @@ function toggleStats() {
 
     }
 
-} 
+}
 </script>
 
 </body>
