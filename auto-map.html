@@ -426,19 +426,20 @@ var marker = L.marker(
     {icon: markerIcon}
 );
 
-        marker.bindPopup(
-            "<b>" + rank + " " +
-            firstName + " " +
-            lastName + "</b><br>" +
+       marker.bindPopup(
+    "<b>" + rank + " " +
+    firstName + " " +
+    lastName + "</b><br><br>" +
 
-            "Status: " + status + "<br>" +
-            "Location: " + location + "<br>" +
-            "Relative Location: " +
-            relativeLocation + "<br><br>" +
+    "Branch: " + branch + "<br>" +
+    "Status: " + status + "<br>" +
+    "Location: " + location + "<br>" +
+    "Relative Location: " +
+    relativeLocation + "<br><br>" +
 
-            "<a href='" + dpaaLink +
-            "' target='_blank'>Open DPAA Profile</a>"
-        );
+    "<a href='" + dpaaLink +
+    "' target='_blank'>Open DPAA Profile</a>"
+);
 
        serviceMembers[
     lastName.toLowerCase().trim()
