@@ -342,6 +342,7 @@ fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTJnh83mbPcdblXJZsSJv69Jk
 const firstName = cols[1];
 const lastName = cols[2];
 const branch = cols[3];
+        console.log("Branch:", branch);
 var branchLower =
 branch.toLowerCase().trim();
 
@@ -466,7 +467,7 @@ document.getElementById("statsContent").innerHTML =
 "🟠 Under Review: " + underReview + "<br><br>" +
 
 "🔵 Relative Location Known: " + relativeKnown + "<br>" +
-"🔴 Relative Location Unknown: " + relativeUnknown;
+"🔴 Relative Location Unknown: " + relativeUnknown
   
  "🔴 Relative Location Unknown: " +
 relativeUnknown +
