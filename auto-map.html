@@ -409,6 +409,9 @@ allMarkers.push({
 });
     }
 document.getElementById("statsContent").innerHTML =
+
+'<div id="showingRecords"></div><br>' +
+
 "<b>Philippines MIA Map</b><br><br>" +
 
 "Total Records: " + totalRecords + "<br><br>" +
@@ -421,6 +424,12 @@ document.getElementById("statsContent").innerHTML =
 "🔵 Relative Location Known: " + relativeKnown + "<br>" +
 "🔴 Relative Location Unknown: " + relativeUnknown;
    map.addLayer(markers); 
+    document.getElementById("showingRecords").innerHTML =
+"Showing: " +
+totalRecords +
+" of " +
+totalRecords +
+" Records";
     applyFilters();
 });
 
@@ -632,21 +641,7 @@ function toggleFilters() {
 function toggleStats() {
 
     var content =
-   document.getElementById("statsContent").innerHTML =
-
-'<div id="showingRecords"></div><br>' +
-
-"<b>Philippines MIA Map</b><br><br>" +
-
-"Total Records: " + totalRecords + "<br><br>" +
-
-"🟢 Active Pursuit: " + activePursuit + "<br>" +
-"⚫ Non-Recoverable: " + nonRecoverable + "<br>" +
-"🟡 Deferred: " + deferred + "<br>" +
-"🟠 Under Review: " + underReview + "<br><br>" +
-
-"🔵 Relative Location Known: " + relativeKnown + "<br>" +
-"🔴 Relative Location Unknown: " + relativeUnknown;
+    document.getElementById("statsContent");
 
     var button =
     document.getElementById("statsButton");
