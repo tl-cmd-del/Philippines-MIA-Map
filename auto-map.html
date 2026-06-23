@@ -304,6 +304,17 @@ var nonRecoverable = 0;
 var deferred = 0;
 var underReview = 0;
 
+var armyCount = 0;
+var navyCount = 0;
+var marineCorpsCount = 0;
+var marineReserveCount = 0;
+var armyAirForcesCount = 0;
+var airForceCount = 0;
+var navyReserveCount = 0;
+var merchantMarineCount = 0;
+var coastGuardCount = 0;
+var civilianCount = 0;
+    
 var relativeKnown = 0;
 var relativeUnknown = 0; 
 
@@ -331,7 +342,40 @@ fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTJnh83mbPcdblXJZsSJv69Jk
 const firstName = cols[1];
 const lastName = cols[2];
 const branch = cols[3];
+var branchLower =
+branch.toLowerCase().trim();
 
+if(branchLower === "army")
+    armyCount++;
+
+if(branchLower === "navy")
+    navyCount++;
+
+if(branchLower === "marine corps")
+    marineCorpsCount++;
+
+if(branchLower === "marine corps reserve")
+    marineReserveCount++;
+
+if(branchLower === "army air force")
+    armyAirForcesCount++;
+
+if(branchLower === "air force")
+    airForceCount++;
+
+if(branchLower === "navy reserve")
+    navyReserveCount++;
+
+if(branchLower === "merchant marine")
+    merchantMarineCount++;
+
+if(branchLower === "coast guard")
+    coastGuardCount++;
+
+if(branchLower === "civilian")
+    civilianCount++;
+        
+        
 const location = cols[4];
 const relativeLocation = cols[5];
 const status = cols[6];
@@ -423,7 +467,26 @@ document.getElementById("statsContent").innerHTML =
 
 "🔵 Relative Location Known: " + relativeKnown + "<br>" +
 "🔴 Relative Location Unknown: " + relativeUnknown;
-   map.addLayer(markers); 
+  
+ "🔴 Relative Location Unknown: " +
+relativeUnknown +
+
+"<hr>" +
+
+"<b>Branch Statistics</b><br><br>" +
+
+"Army: " + armyCount + "<br>" +
+"Navy: " + navyCount + "<br>" +
+"Marine Corps: " + marineCorpsCount + "<br>" +
+"Marine Corps Reserve: " + marineReserveCount + "<br>" +
+"Army Air Force: " + armyAirForcesCount + "<br>" +
+"Air Force: " + airForceCount + "<br>" +
+"Navy Reserve: " + navyReserveCount + "<br>" +
+"Merchant Marine: " + merchantMarineCount + "<br>" +
+"Coast Guard: " + coastGuardCount + "<br>" +
+"Civilian: " + civilianCount;
+    
+    map.addLayer(markers); 
     document.getElementById("showingRecords").innerHTML =
 "Showing: " +
 totalRecords +
