@@ -242,6 +242,12 @@ onchange="applyFilters()">
 Unknown
 </label>
 
+<hr>
+
+<button onclick="resetFilters()" style="width:100%;">
+Reset Filters
+</button>
+    
 </div>
 
 </div>
@@ -678,7 +684,34 @@ visibleRecords +
 " of " +
 totalRecords +
 " Records";
+    }
+        
+        
+function resetFilters() {
+
+    document.getElementById("showActive").checked = true;
+    document.getElementById("showNonRecoverable").checked = true;
+    document.getElementById("showDeferred").checked = true;
+    document.getElementById("showUnderReview").checked = true;
+
+    document.getElementById("showArmy").checked = true;
+    document.getElementById("showNavy").checked = true;
+    document.getElementById("showMarineCorps").checked = true;
+    document.getElementById("showMarineReserve").checked = true;
+    document.getElementById("showArmyAirForces").checked = true;
+    document.getElementById("showAirForce").checked = true;
+    document.getElementById("showNavyReserve").checked = true;
+    document.getElementById("showMerchantMarine").checked = true;
+    document.getElementById("showCoastGuard").checked = true;
+    document.getElementById("showCivilian").checked = true;
+
+    document.getElementById("showKnown").checked = true;
+    document.getElementById("showUnknown").checked = true;
+
+    applyFilters();
 }
+        
+        
 function toggleFilters() {
 
     var content =
