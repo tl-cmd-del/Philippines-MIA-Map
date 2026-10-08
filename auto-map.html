@@ -529,29 +529,87 @@ totalRecords +
 
 function searchPerson() {
 
-    var name =
-    document.getElementById("searchInput")
-    .value
-    .toLowerCase()
-    .trim();
+    var searchText =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
 
-    if(serviceMembers[name]) {
+    var resultsBox =
+        document.getElementById("searchResults");
 
-        var marker = serviceMembers[name];
+    resultsBox.innerHTML = "";
 
-        map.setView(
-            marker.getLatLng(),
-            10
+    if(searchText === "") {
+        return;
+    }
+
+    var results = allPeople.filter(function(person) {
+
+        var firstName =
+            person.firstName.toLowerCase();
+
+        var lastName =
+            person.lastName.toLowerCase();
+
+        var fullName =
+            person.fullName.toLowerCase();
+
+        return (
+            firstName.includes(searchText) ||
+            lastName.includes(searchText) ||
+            fullName.includes(searchText)
         );
 
-        marker.openPopup();
+    });
 
+    if(results.length === 0) {
+
+        resultsBox.innerHTML =
+            "<div style='padding:8px;'>No service members found.</div>";
+
+        return;
     }
-    else {
 
-        alert("Service member not found");
+    resultsBox.innerHTML =
+        "<b>Search Results (" +
+        results.length +
+        ")</b><br><br>";
 
-    }
+    results.forEach(function(person) {
+
+        var resultButton =
+            document.createElement("button");
+
+        resultButton.style.width = "100%";
+        resultButton.style.textAlign = "left";
+        resultButton.style.marginBottom = "6px";
+        resultButton.style.padding = "8px";
+        resultButton.style.cursor = "pointer";
+
+        resultButton.innerHTML =
+            "<b>" +
+            person.rank + " " +
+            person.fullName +
+            "</b><br>" +
+            person.branch +
+            " • " +
+            person.location;
+
+        resultButton.onclick = function() {
+
+            map.setView(
+                person.marker.getLatLng(),
+                10
+            );
+
+            person.marker.openPopup();
+
+        };
+
+        resultsBox.appendChild(resultButton);
+
+    });
 
 }  
 
