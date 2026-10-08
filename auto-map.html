@@ -70,16 +70,26 @@ background:white;
 padding:10px;
 border-radius:8px;
 box-shadow:0 0 5px rgba(0,0,0,.3);
+width:280px;
 ">
 
 <input
 id="searchInput"
 type="text"
-placeholder="Search Last Name">
+placeholder="Search by name..."
+style="width:180px;">
 
 <button onclick="searchPerson()">
 Search
 </button>
+
+<div id="searchResults"
+style="
+margin-top:8px;
+max-height:250px;
+overflow-y:auto;
+">
+</div>
 
 </div>
 
@@ -328,9 +338,11 @@ var relativeUnknown = 0;
 
 var visibleRecords = 0;
     
-    var serviceMembers = {};
+var serviceMembers = {};
 
-   var allMarkers = [];
+var allMarkers = [];
+
+var allPeople = [];
     
 fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTJnh83mbPcdblXJZsSJv69JkEXEUUK0UQlyB6Vljf1xJN2vN0PRMQtQZ2NtEnjkhjYb6GCGniFbyii/pub?output=csv")
 
@@ -461,6 +473,17 @@ allMarkers.push({
     branch: branch,
     relativeLocation: relativeLocation
 });
+
+        allPeople.push({
+    firstName: firstName,
+    lastName: lastName,
+    fullName: (firstName + " " + lastName).trim(),
+    rank: rank,
+    branch: branch,
+    location: location,
+    marker: marker
+});
+        
     }
 document.getElementById("statsContent").innerHTML =
 
