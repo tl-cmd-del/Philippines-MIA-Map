@@ -106,6 +106,21 @@ html, body {
         grid-template-columns: 1fr;
     }
 }
+    #mapSection {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto 40px;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+}
+
+#map {
+    height: 700px;
+    width: 100%;
+    border-radius: 8px;
+}
 </style>
 
 <link rel="stylesheet"
@@ -158,7 +173,8 @@ href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.c
         <span>Geographic Coverage</span>
     </div>
 </section>
-    
+<body>    
+ <section id="mapSection">   
 <div id="statsBox"
 style="
 position:absolute;
@@ -395,7 +411,7 @@ Reset Filters
 </div>
     
 <div id="map"></div>
-
+</section>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script>
